@@ -1,0 +1,42 @@
+body {
+    background-image: url('placeholder.png');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.pixel-font {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px #000000;
+}
+
+.pixel-border {
+    border: 4px solid #000000;
+    box-shadow: inset 0 0 0 4px #ffffff;
+    border-radius: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.2);
+}
+
+#song-list div, #search-results div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#song-list div:hover, #search-results div:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#album-art {
+    image-rendering: pixelated;
+}

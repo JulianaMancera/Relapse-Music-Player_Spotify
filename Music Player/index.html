@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Relapse Music Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex flex-col bg-gray-900 text-white">
+    <div id="landing" class="flex-1 flex items-center justify-center bg-black bg-opacity-80">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold pixel-font mb-4">Pixel Relapse Music Player</h1>
+            <p class="text-xl mb-6">Welcome to a retro pixel art music player integrated with Spotify! Enjoy all your saved tracks with hand gesture controls and a nostalgic 8-bit vibe. Dive in and start your musical journey!</p>
+            <button onclick="startPlayer()" class="bg-green-600 hover:bg-green-700 pixel-font py-3 px-6 rounded-lg text-lg">Enter Player</button>
+        </div>
+    </div>
+    <div id="player" class="hidden flex flex-row h-screen">
+        <!-- Sidebar (Spotify-like navigation) -->
+        <div class="w-64 bg-gray-800 p-4">
+            <h2 class="text-2xl pixel-font mb-4">Menu</h2>
+            <ul class="space-y-2">
+                <li><button id="toggle-library" class="w-full text-left pixel-font hover:bg-gray-700 p-2 rounded">Library</button></li>
+                <li><button id="toggle-search" class="w-full text-left pixel-font hover:bg-gray-700 p-2 rounded">Search</button></li>
+            </ul>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 p-6 overflow-auto">
+            <div id="now-playing" class="text-2xl pixel-font mb-4"></div>
+            <div id="progress-bar" class="w-full bg-gray-700 h-2 mb-4 pixel-border">
+                <div id="progress" class="bg-green-600 h-2" style="width: 0%"></div>
+            </div>
+            <div class="flex space-x-4 mb-4">
+                <button id="prev-btn" class="control-btn pixel-font text-2xl">⏮</button>
+                <button id="play-pause-btn" class="control-btn pixel-font text-2xl">▶</button>
+                <button id="next-btn" class="control-btn pixel-font text-2xl">⏭</button>
+            </div>
+            <div class="mb-4">
+                <input id="volume-slider" type="range" min="0" max="100" value="50" class="w-48 pixel-border">
+            </div>
+            <div id="main-content">
+                <div id="library" class="hidden">
+                    <h3 class="text-xl pixel-font mb-2">Your Library</h3>
+                    <div id="song-list" class="pixel-border max-h-96 overflow-y-auto"></div>
+                </div>
+                <div id="search-section" class="hidden">
+                    <input id="search-input" type="text" placeholder="Search songs..." class="p-2 rounded text-black pixel-border mb-2 w-full">
+                    <button id="search-btn" class="bg-green-600 hover:bg-green-700 pixel-font py-2 px-4 rounded">Search</button>
+                    <div id="search-results" class="pixel-border max-h-96 overflow-y-auto mt-2"></div>
+                </div>
+                <div id="lyrics-panel" class="hidden pixel-border max-h-96 overflow-y-auto mt-4 p-4">
+                    <h3 class="text-xl pixel-font mb-2">Lyrics</h3>
+                </div>
+            </div>
+            <img id="album-art" src="placeholder.png" alt="Album Art" class="w-48 h-48 mt-4 pixel-border" />
+        </div>
+        <video id="webcam" autoplay class="hidden"></video>
+        <canvas id="canvas" class="hidden"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
